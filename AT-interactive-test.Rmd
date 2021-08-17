@@ -1,0 +1,27 @@
+---
+title: "Aimee test"
+author: "Ed Harris"
+date: "8/17/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Aimee T's fancy interactive graph
+
+Information about my fancy graph here
+
+```{r pressure, echo=FALSE}
+library(networkD3)
+URL <- paste0(
+        "https://cdn.rawgit.com/christophergandrud/networkD3/",
+        "master/JSONdata/energy.json")
+Energy <- jsonlite::fromJSON(URL)
+# Plot
+sankeyNetwork(Links = Energy$links, Nodes = Energy$nodes, Source = "source",
+             Target = "target", Value = "value", NodeID = "name",
+             units = "TWh", fontSize = 12, nodeWidth = 30)
+```
+
